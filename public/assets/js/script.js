@@ -27,7 +27,7 @@ const handleAnimalFormSubmit = event => {
   }
   const animalObject = { name, species, diet, personalityTraits };
 
-  fetch('/api/animals', {
+  fetch('api/animals', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -39,16 +39,13 @@ const handleAnimalFormSubmit = event => {
       if (response.ok) {
         return response.json();
       }
-      alert(`Error: ${response.statusText}`);
+      alert('Error: ' + response.statusText);
     })
     .then(postResponse => {
       console.log(postResponse);
       alert('Thank you for adding an animal!');
     });
 };
-
-$zookeeperForm.addEventListener('submit', handleZookeeperFormSubmit);
-$animalForm.addEventListener('submit', handleAnimalFormSubmit);
 
 const handleZookeeperFormSubmit = event => {
   event.preventDefault();
@@ -79,3 +76,6 @@ const handleZookeeperFormSubmit = event => {
       alert('Thank you for adding a zookeeper!');
     });
 };
+
+$animalForm.addEventListener('submit', handleAnimalFormSubmit);
+$zookeeperForm.addEventListener('submit', handleZookeeperFormSubmit);
